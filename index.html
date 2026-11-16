@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookworm Wiki — 小書痴的下剋上知識庫</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --primary: #1e3a8a;
+      --accent: #2563eb;
+      --tag-bg: #eff6ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
+    aside {
+      width: 270px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 24px 16px;
+      flex-shrink: 0;
+    }
+    aside h1 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    aside p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    nav button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: var(--text);
+      cursor: pointer;
+      margin-bottom: 4px;
+    }
+    nav button:hover, nav button.active {
+      background: var(--tag-bg);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    main {
+      flex: 1;
+      max-width: 960px;
+      padding: 36px 40px;
+    }
+    .section { display: none; }
+    .section.active { display: block; }
+    h2 {
+      font-size: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin: 20px 0 10px;
+      color: var(--primary);
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-family: monospace;
+    }
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--accent);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f1f5f9; }
+    code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      aside { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+  <aside>
+    <h1>Bookworm Wiki</h1>
+    <p>小書痴的下剋上 角色與世界觀知識庫</p>
+    <nav>
+      <button class="active" onclick="showTab('overview', this)">總體知識地圖 (overview)</button>
+      <button onclick="showTab('characters', this)">主要角色索引 (characters)</button>
+      <button onclick="showTab('factions', this)">勢力與領地 (factions)</button>
+      <button onclick="showTab('concepts', this)">世界觀核心概念 (concepts)</button>
+      <button onclick="showTab('syntheses', this)">綜合分析與日誌 (syntheses)</button>
+    </nav>
+  </aside>
+
+  <main>
+    <div id="overview" class="section active">
+      <h2>Bookworm Wiki 總體架構（wiki/overview.md）</h2>
+      <div class="card">
+        <div class="meta">repository: bookworm-wiki | schema: AGENTS.md | total_characters: 39</div>
+        <p>本知識庫針對《小書痴的下剋上》作品進行結構化整理，依據 <code>AGENTS.md</code> 規範分為唯讀原始資料層（<code>raw/characters/</code>）與結構化知識庫層（<code>wiki/</code>），涵蓋 39 位核心角色、7 大勢力陣營、6 項世界觀核心設定以及魔力與階級對照分析。</p>
+      </div>
+      <h3>知識庫目錄結構（wiki/index.md）</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>目錄路徑</th>
+            <th>資料類型</th>
+            <th>收錄數量</th>
+            <th>說明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>wiki/characters/</code></td>
+            <td>角色專頁</td>
+            <td>39 篇</td>
+            <td>依角色身分與登場階段編排，包含羅潔梅茵、斐迪南、齊爾維斯特等人物設定。</td>
+          </tr>
+          <tr>
+            <td><code>wiki/factions/</code></td>
+            <td>勢力陣營</td>
+            <td>7 篇</td>
+            <td>涵蓋中央王族、齊爾維斯特領（貴族、神殿、平民區）、戴肯弗爾格與亞倫斯伯罕。</td>
+          </tr>
+          <tr>
+            <td><code>wiki/concepts/</code></td>
+            <td>核心概念</td>
+            <td>6 篇</td>
+            <td>解析魔力壓縮、身蝕、獻名、迪塔、印刷革命與王書（Grutrissheit）。</td>
+          </tr>
+          <tr>
+            <td><code>wiki/syntheses/</code></td>
+            <td>跨條目綜述</td>
+            <td>1 篇</td>
+            <td><code>mana-and-rank-matrix.md</code>：跨勢力角色魔力等級與身分階級對照矩陣。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="characters" class="section">
+      <h2>主要角色索引（wiki/characters/）</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>檔案名稱</th>
+            <th>角色名稱</th>
+            <th>所屬勢力</th>
+            <th>核心定位</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>rozemyne.md</code></td>
+            <td>羅潔梅茵（Rozemyne）</td>
+            <td>主線核心 / 齊爾維斯特</td>
+            <td>擁有現代記憶的轉生者，推動造紙與印刷革命，具備極高魔力量與全屬性適性。</td>
+          </tr>
+          <tr>
+            <td><code>ferdinand.md</code></td>
+            <td>斐迪南（Ferdinand）</td>
+            <td>主線核心 / 齊爾維斯特</td>
+            <td>前神官長與領主候補生，羅潔梅茵的監護人與導師，精通魔導具研發與政務。</td>
+          </tr>
+          <tr>
+            <td><code>sylvester.md</code></td>
+            <td>齊爾維斯特（Sylvester）</td>
+            <td>齊爾維斯特貴族</td>
+            <td>齊爾維斯特領地領主，收養羅潔梅茵為養女以保護其免受外部勢力干預。</td>
+          </tr>
+          <tr>
+            <td><code>benno.md</code></td>
+            <td>班諾（Benno）</td>
+            <td>齊爾維斯特平民區</td>
+            <td>奇爾博塔商會會長，協助梅茵建立植物紙與印刷工坊商業體系。</td>
+          </tr>
+          <tr>
+            <td><code>lutz.md</code></td>
+            <td>路茲（Lutz）</td>
+            <td>齊爾維斯特平民區</td>
+            <td>梅茵的青梅竹馬與商業夥伴，負責工坊實務運作與跨領地商務協調。</td>
+          </tr>
+          <tr>
+            <td><code>hartmut.md</code></td>
+            <td>哈特姆特（Hartmut）</td>
+            <td>齊爾維斯特貴族</td>
+            <td>羅潔梅茵的近侍文官與狂熱信徒，主導聖女傳說的宣傳與情報蒐集。</td>
+          </tr>
+          <tr>
+            <td><code>hannelore.md</code></td>
+            <td>漢娜蘿蕾（Hannelore）</td>
+            <td>戴肯弗爾格</td>
+            <td>大領地戴肯弗爾格領主候補生，羅潔梅茵在貴族院的摯友。</td>
+          </tr>
+          <tr>
+            <td><code>eglantine.md</code></td>
+            <td>艾グランティーヌ（Eglantine）</td>
+            <td>中央與王族</td>
+            <td>具備全屬性與王族血統的領主候補生，後成為中央王族核心成員。</td>
+          </tr>
+          <tr>
+            <td><code>georgine.md</code></td>
+            <td>喬琪娜（Georgine）</td>
+            <td>亞倫斯伯罕</td>
+            <td>齊爾維斯特的長姊，嫁入亞倫斯伯罕，長期策劃奪取齊爾維斯特領地基礎。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="factions" class="section">
+      <h2>勢力與領地分類（wiki/factions/）</h2>
+      <div class="card">
+        <div class="meta">path: wiki/factions/main-protagonists.md</div>
+        <h3>主線核心陣營（Main Protagonists）</h3>
+        <p>以 <code>[[rozemyne]]</code> 與 <code>[[ferdinand]]</code> 為中心，連結神殿、平民工坊與領主一族的跨階級協作網絡。</p>
+      </div>
+      <div class="card">
+        <div class="meta">path: wiki/factions/ehrenfest-nobles.md | ehrenfest-temple.md | ehrenfest-downtown.md</div>
+        <h3>齊爾維斯特領（Ehrenfest）</h3>
+        <p>分為三大區塊：<strong>貴族社會</strong>（以領主 <code>[[sylvester]]</code>、騎士團長 <code>[[karstedt]]</code> 與文官 <code>[[elvira]]</code> 為首）、<strong>神殿體系</strong>（由羅潔梅茵擔任神殿長，整合 <code>[[fran]]</code>、<code>[[gil]]</code> 等灰衣神官）以及<strong>平民區商業圈</strong>（以 <code>[[benno]]</code>、<code>[[mark]]</code> 與 <code>[[lutz]]</code> 為骨幹）。</p>
+      </div>
+      <div class="card">
+        <div class="meta">path: wiki/factions/sovereignty-and-royalty.md | dunkelfelger.md | ahrensbach.md</div>
+        <h3>中央王族與外部大領地</h3>
+        <p>包含中央王族（<code>[[anastasius]]</code>、<code>[[sigiswald]]</code>、<code>[[hildebrand]]</code>、<code>[[eglantine]]</code>）、武勇大領地戴肯弗爾格（<code>[[lestilaut]]</code>、<code>[[hannelore]]</code>）以及鄰近大領地亞倫斯伯罕（<code>[[georgine]]</code>、<code>[[dietlinde]]</code>）。</p>
+      </div>
+    </div>
+
+    <div id="concepts" class="section">
+      <h2>世界觀核心概念（wiki/concepts/）</h2>
+      <div class="card">
+        <span class="tag">魔力系統</span>
+        <h3>魔力壓縮（mana-compression.md）與身蝕（devouring.md）</h3>
+        <p><strong>身蝕</strong>指平民體內擁有魔力卻缺乏魔導具疏導，導致魔力反噬發熱的症狀；<strong>魔力壓縮</strong>則是羅潔梅茵為抑制身蝕而開發的多階段壓縮法，能大幅提升魔力總量上限。</p>
+      </div>
+      <div class="card">
+        <span class="tag">社會制度</span>
+        <h3>獻名（name-swearing.md）與迪塔（ditter.md）</h3>
+        <p><strong>獻名</strong>為貴族將刻有真名的魔石交予主君以示絕對忠誠的儀式（如 <code>[[roderich]]</code>、<code>[[matthias]]</code>）；<strong>迪塔</strong>為貴族院及領地間的傳統模擬戰與奪寶競技。</p>
+      </div>
+      <div class="card">
+        <span class="tag">歷史與權力</span>
+        <h3>印刷革命（printing-revolution.md）與王書（grutrissheit.md）</h3>
+        <p><strong>印刷革命</strong>透過植物紙與活字印刷降低書籍成本，改變尤根施密特的知識傳播結構；<strong>王書（Grutrissheit）</strong>則為統治全國與重繪領地國界所需的核心魔導具知識。</p>
+      </div>
+    </div>
+
+    <div id="syntheses" class="section">
+      <h2>跨文獻綜合分析與操作日誌</h2>
+      <div class="card">
+        <div class="meta">path: wiki/syntheses/mana-and-rank-matrix.md</div>
+        <h3>魔力與身分階級對照矩陣</h3>
+        <p>彙整全庫 39 位角色的魔力量級（王族級、大領地領主候補生級、上級貴族、中級貴族、下級貴族、身蝕平民與無魔力平民）與其所屬領地、近侍從屬關係的交叉分析表。</p>
+      </div>
+      <div class="card">
+        <div class="meta">path: wiki/log.md & wiki/templates/character.md</div>
+        <h3>自動化維護與模板規範</h3>
+        <p>依據 <code>AGENTS.md</code> 規範，所有新增角色頁面均需套用 <code>wiki/templates/character.md</code> 標準欄位（基本資料、魔力與屬性、人際網絡、關鍵事件），並同步更新 <code>wiki/index.md</code> 與 <code>wiki/log.md</code>。</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function showTab(tabId, btn) {
+      document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
