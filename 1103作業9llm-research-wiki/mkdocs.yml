@@ -1,0 +1,60 @@
+site_name: LLM 研究知識庫
+site_description: 基於 Karpathy LLM Wiki 模式建構的個人 LLM 研究知識庫
+docs_dir: wiki
+site_dir: site
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - scheme: default
+      primary: slate
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切換至深色模式
+    - scheme: slate
+      primary: slate
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切換至淺色模式
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+  - roamlinks
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - tables
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 首頁目錄: index.md
+  - 研究地圖: overview.md
+  - 核心概念: concepts/
+  - 模型架構: models/
+  - 評測基準: benchmarks/
+  - 跨文獻綜述: syntheses/
+  - 文獻摘要: sources/
+  - 維護日誌: log.md
